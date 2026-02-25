@@ -1,0 +1,43 @@
+<svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #ffffff; stroke: #333; stroke-width: 1.2; }
+    .arrow { stroke: #007bff; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    .text-base { font-family: 'Times New Roman', 'SimSun', serif; font-size: 14px; }
+    /* 变量斜体样式 */
+    .math-italic { font-family: 'Times New Roman', serif; font-style: italic; }
+    .formula { font-family: 'Times New Roman', serif; font-size: 14px; font-weight: bold; fill: #d32f2f; }
+    .math-sub { font-size: 9px; font-style: italic; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#007bff" />
+    </marker>
+  </defs>
+
+  <rect x="180" y="20" width="140" height="40" rx="4" class="box" />
+  <text x="250" y="45" text-anchor="middle" class="text-base">智能体 Agent</text>
+
+  <rect x="180" y="160" width="140" height="40" rx="4" class="box" />
+  <text x="250" y="185" text-anchor="middle" class="text-base">环境 Environment</text>
+
+  <path d="M 320,40 C 370,40 370,180 320,180" class="arrow" />
+  <text x="380" y="115" text-anchor="middle" class="text-base">
+    动作 <tspan class="math-italic">a</tspan><tspan dy="3" class="math-sub">t</tspan>
+  </text>
+
+  <path d="M 180,180 C 130,180 130,40 180,40" class="arrow" />
+  <text x="115" y="105" text-anchor="middle" class="text-base">
+    状态 <tspan class="math-italic">s</tspan><tspan dy="3" class="math-sub">t</tspan>
+  </text>
+  <text x="120" y="135" text-anchor="middle" class="text-base">
+    奖励 <tspan class="math-italic">r</tspan><tspan dy="3" class="math-sub">t+1</tspan>1
+  </text>
+
+  <text x="250" y="115" text-anchor="middle" class="formula">
+    (<tspan class="math-italic">s</tspan><tspan dy="3" class="math-sub">t</tspan><tspan dy="-3"> , </tspan>
+    <tspan class="math-italic">a</tspan><tspan dy="3" class="math-sub">t</tspan><tspan dy="-3"> , </tspan>
+    <tspan class="math-italic">r</tspan><tspan dy="3" class="math-sub">t+1</tspan><tspan dy="-3"> , </tspan>
+    <tspan class="math-italic">s</tspan><tspan dy="3" class="math-sub">t+1</tspan><tspan dy="-3">)</tspan>
+  </text>
+</svg>

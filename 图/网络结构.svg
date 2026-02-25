@@ -1,0 +1,90 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      /* 基础文字样式：新罗马, 12px */
+      .text-base { font-family: 'Times New Roman', serif; font-size: 18px; text-anchor: middle; }
+      .text-label { font-family: 'Times New Roman', serif; font-size: 18px; text-anchor: middle; font-weight: bold; }
+      .text-title { font-family: 'Times New Roman', serif; font-size: 18px; text-anchor: middle; font-weight: bold; }
+      .text-activation { font-family: 'Times New Roman', serif; font-size: 18px; fill: #D32F2F; font-weight: bold; }
+      
+      .neuron-input { fill: #A3D5FF; stroke: #0056b3; stroke-width: 1.5; }
+      .neuron-hidden { fill: #FFD5A3; stroke: #b35900; stroke-width: 1.5; }
+      .neuron-output { fill: #A3FFB3; stroke: #00b319; stroke-width: 1.5; }
+      .layer-box { fill: none; stroke: #ddd; stroke-dasharray: 5,5; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="800" height="500" fill="#ffffff" />
+
+
+  <g transform="translate(100, 0)">
+    <rect x="-40" y="80" width="80" height="340" class="layer-box" />
+    <text x="0" y="75" class="text-label">Input Layer</text>
+    <text x="0" y="440" class="text-base">State Dim: 8</text>
+    
+    <circle cx="0" cy="120" r="10" class="neuron-input" />
+    <circle cx="0" cy="150" r="10" class="neuron-input" />
+    <circle cx="0" cy="180" r="10" class="neuron-input" />
+    <circle cx="0" cy="220" r="2" fill="#000" /> <circle cx="0" cy="230" r="2" fill="#000" /> <circle cx="0" cy="240" r="2" fill="#000" />
+    <circle cx="0" cy="280" r="10" class="neuron-input" />
+    <circle cx="0" cy="310" r="10" class="neuron-input" />
+    <circle cx="0" cy="340" r="10" class="neuron-input" />
+  </g>
+
+  <text x="200" y="235" class="text-activation">ReLU</text>
+
+  <g transform="translate(300, 0)">
+    <rect x="-40" y="70" width="80" height="360" class="layer-box" />
+    <text x="0" y="60" class="text-label">Hidden Layer 1</text>
+    <text x="0" y="450" class="text-base">FC: 64 Neurons</text>
+    
+    <circle cx="0" cy="100" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="130" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="160" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="190" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="230" r="2" fill="#000" /> <circle cx="0" cy="240" r="2" fill="#000" /> <circle cx="0" cy="250" r="2" fill="#000" />
+    <circle cx="0" cy="290" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="320" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="350" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="380" r="10" class="neuron-hidden" />
+  </g>
+
+  <text x="400" y="245" class="text-activation">ReLU</text>
+
+  <g transform="translate(500, 0)">
+    <rect x="-40" y="70" width="80" height="360" class="layer-box" />
+    <text x="0" y="60" class="text-label">Hidden Layer 2</text>
+    <text x="0" y="450" class="text-base">FC: 64 Neurons</text>
+    
+    <circle cx="0" cy="100" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="130" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="160" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="190" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="230" r="2" fill="#000" /> <circle cx="0" cy="240" r="2" fill="#000" /> <circle cx="0" cy="250" r="2" fill="#000" />
+    <circle cx="0" cy="290" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="320" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="350" r="10" class="neuron-hidden" />
+    <circle cx="0" cy="380" r="10" class="neuron-hidden" />
+  </g>
+
+  <g transform="translate(700, 0)">
+    <rect x="-40" y="80" width="80" height="340" class="layer-box" />
+    <text x="0" y="75" class="text-label">Output Layer</text>
+    <text x="0" y="440" class="text-base">Action Dim: 8</text>
+    <text x="0" y="458" class="text-base">(Q-Values)</text>
+    
+    <circle cx="0" cy="120" r="10" class="neuron-output" />
+    <circle cx="0" cy="150" r="10" class="neuron-output" />
+    <circle cx="0" cy="180" r="10" class="neuron-output" />
+    <circle cx="0" cy="220" r="2" fill="#000" /> <circle cx="0" cy="230" r="2" fill="#000" /> <circle cx="0" cy="240" r="2" fill="#000" />
+    <circle cx="0" cy="280" r="10" class="neuron-output" />
+    <circle cx="0" cy="310" r="10" class="neuron-output" />
+    <circle cx="0" cy="340" r="10" class="neuron-output" />
+  </g>
+
+  <g stroke="#999" stroke-width="0.8" opacity="0.2">
+    <path d="M100 120 L300 100 M100 120 L300 380 M100 340 L300 100 M100 340 L300 380 M100 230 L300 240" />
+    <path d="M300 100 L500 100 M300 100 L500 380 M300 380 L500 100 M300 380 L500 380 M300 240 L500 240" />
+    <path d="M500 100 L700 120 M500 100 L700 340 M500 380 L700 120 M500 380 L700 340 M500 240 L700 230" />
+  </g>
+</svg>

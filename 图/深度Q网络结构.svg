@@ -1,0 +1,77 @@
+<svg viewBox="0 0 850 600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #ffffff; stroke: #333; stroke-width: 1.5; }
+    .dashed-box { fill: none; stroke: #666; stroke-width: 1.5; stroke-dasharray: 6 4; }
+    .arrow { stroke: #007bff; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    .text-base { font-family: 'Times New Roman', 'SimSun', serif; font-size: 12px; fill: #000; }
+    .text-bold { font-weight: bold; font-size: 13px; }
+    .math-italic { font-family: 'Times New Roman', serif; font-style: italic; }
+    .math-sub { font-size: 9px; font-style: italic; }
+    .node { fill: #fff; stroke: #555; stroke-width: 1; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#007bff" />
+    </marker>
+    <g id="dqn-net">
+      <rect x="0" y="0" width="160" height="120" rx="5" class="box" />
+      <circle cx="20" cy="30" r="4" class="node" /><circle cx="20" cy="50" r="4" class="node" />
+      <text x="20" y="75" text-anchor="middle" class="text-base" style="font-size:8px">⋮</text>
+      <circle cx="20" cy="90" r="4" class="node" />
+      <circle cx="80" cy="20" r="4" class="node" /><circle cx="80" cy="40" r="4" class="node" />
+      <text x="80" y="70" text-anchor="middle" class="text-base" style="font-size:8px">⋮</text>
+      <circle cx="80" cy="100" r="4" class="node" />
+      <circle cx="140" cy="30" r="4" class="node" /><circle cx="140" cy="50" r="4" class="node" />
+      <text x="140" y="75" text-anchor="middle" class="text-base" style="font-size:8px">⋮</text>
+      <circle cx="140" cy="90" r="4" class="node" />
+    </g>
+  </defs>
+
+  <rect x="300" y="30" width="250" height="60" rx="10" class="box" stroke-width="2" />
+  <text x="425" y="60" text-anchor="middle" class="text-bold">SUMO 仿真环境 (1x1 Road Net)</text>
+  <text x="425" y="80" text-anchor="middle" class="text-base">Intersection <tspan class="math-italic">J0</tspan></text>
+
+  <rect x="50" y="130" width="750" height="440" class="dashed-box" />
+  <text x="80" y="150" class="text-bold">强化学习智能体 RL Agent</text>
+
+  <path d="M 300,60 L 150,60 L 150,200" class="arrow" />
+  <text x="155" y="120" class="text-base">状态观测 <tspan class="math-italic">s<tspan dy="3" class="math-sub">t</tspan></tspan></text>
+  <rect x="80" y="200" width="140" height="40" class="box" />
+  <text x="150" y="225" text-anchor="middle" class="text-base">8 维相位排队长度</text>
+
+  <use href="#dqn-net" x="400" y="160" />
+  <text x="480" y="150" text-anchor="middle" class="text-bold">主网络 Main Net (<tspan class="math-italic">θ</tspan>)</text>
+  <text x="480" y="295" text-anchor="middle" class="text-base" fill="#d32f2f">FC: 8-64-64-8 (ReLU)</text>
+
+  <use href="#dqn-net" x="400" y="380" />
+  <text x="480" y="370" text-anchor="middle" class="text-bold">目标网络 Target Net (<tspan class="math-italic">θ</tspan><tspan dy="-5" style="font-size:9px">⁻</tspan>)</text>
+
+  <path d="M 120,380 C 120,365 240,365 240,380 L 240,520 C 240,535 120,535 120,520 Z" class="box" />
+  <ellipse cx="180" cy="380" rx="60" ry="12" class="box" />
+  <text x="180" y="460" text-anchor="middle" class="text-base">经验回放池</text>
+  <text x="180" y="480" text-anchor="middle" class="math-italic">Replay Memory (D)</text>
+
+  <path d="M 220,220 L 400,220" class="arrow" />
+  
+  <path d="M 560,220 L 750,220 L 750,60 L 550,60" class="arrow" />
+  <text x="680" y="50" text-anchor="middle" class="text-base">执行动作 <tspan class="math-italic">a<tspan dy="3" class="math-sub">t</tspan></tspan> (相位)</text>
+  <text x="680" y="210" text-anchor="middle" class="text-base">Max Q-Value</text>
+
+  <path d="M 425,90 L 425,120 L 180,120 L 180,365" class="arrow" />
+  <text x="210" y="115" class="text-base">奖励 <tspan class="math-italic">r<tspan dy="3" class="math-sub">t+1</tspan></tspan></text>
+
+  <path d="M 240,460 L 320,460 L 320,240 L 400,240" class="arrow" />
+  <path d="M 320,460 L 400,460" class="arrow" />
+  <text x="330" y="350" text-anchor="middle" class="text-base" transform="rotate(-90 330 350)">小批量采样 Minibatch</text>
+
+  <path d="M 480,280 L 480,380" class="arrow" />
+  <text x="485" y="340" class="text-base">每 <tspan class="math-italic">C</tspan> 步同步参数</text>
+
+  <text x="425" y="585" text-anchor="middle" class="text-bold" fill="#d32f2f">
+    (<tspan class="math-italic">s</tspan><tspan dy="3" class="math-sub">t</tspan><tspan dy="-3">, </tspan>
+    <tspan class="math-italic">a</tspan><tspan dy="3" class="math-sub">t</tspan><tspan dy="-3">, </tspan>
+    <tspan class="math-italic">r</tspan><tspan dy="3" class="math-sub">t+1</tspan><tspan dy="-3">, </tspan>
+    <tspan class="math-italic">s</tspan><tspan dy="3" class="math-sub">t+1</tspan><tspan dy="-3">)</tspan>
+  </text>
+</svg>

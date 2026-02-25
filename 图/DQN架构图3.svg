@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#009900"/>
+    </marker>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="900" height="700" fill="#fafbfc"/>
+  
+  <!-- 标题 -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">
+    DQN Architecture for Traffic Signal Control
+  </text>
+  <text x="450" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">
+    Based on 1x1_training.py | State: 8 phases queue | Action: 8 signal phases
+  </text>
+  
+  <!-- ==================== 神经网络结构（左侧） ==================== -->
+  <rect x="30" y="70" width="320" height="280" fill="white" stroke="#ddd" stroke-width="2" rx="5"/>
+  <text x="190" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+    Neural Network (DQN class)
+  </text>
+  
+  <!-- 输入层 -->
+  <g transform="translate(60, 120)">
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="11" fill="#666">Input Layer</text>
+    <rect x="-15" y="0" width="30" height="180" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5" rx="3"/>
+    <text x="0" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1976d2" transform="rotate(-90 0 90)">State (8)</text>
+    <!-- 神经元 -->
+    <circle cx="0" cy="20" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+    <circle cx="0" cy="45" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+    <circle cx="0" cy="70" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+    <text x="0" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">...</text>
+    <circle cx="0" cy="140" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+    <circle cx="0" cy="165" r="6" fill="white" stroke="#1976d2" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 隐藏层1 -->
+  <g transform="translate(150, 120)">
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="11" fill="#666">FC1 + ReLU</text>
+    <rect x="-20" y="0" width="40" height="180" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5" rx="3"/>
+    <text x="0" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f57c00" transform="rotate(-90 0 90)">Hidden (64)</text>
+    <!-- 神经元 -->
+    <circle cx="0" cy="15" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="35" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="55" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="75" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <text x="0" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">...</text>
+    <circle cx="0" cy="125" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="145" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="165" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 隐藏层2 -->
+  <g transform="translate(240, 120)">
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="11" fill="#666">FC2 + ReLU</text>
+    <rect x="-20" y="0" width="40" height="180" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5" rx="3"/>
+    <text x="0" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f57c00" transform="rotate(-90 0 90)">Hidden (64)</text>
+    <!-- 神经元 -->
+    <circle cx="0" cy="15" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="35" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="55" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="75" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <text x="0" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">...</text>
+    <circle cx="0" cy="125" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="145" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+    <circle cx="0" cy="165" r="6" fill="white" stroke="#f57c00" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 输出层 -->
+  <g transform="translate(320, 120)">
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="11" fill="#666">FC3 (Linear)</text>
+    <rect x="-15" y="0" width="30" height="180" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5" rx="3"/>
+    <text x="0" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#388e3c" transform="rotate(-90 0 90)">Q-Values (8)</text>
+    <!-- 神经元 -->
+    <circle cx="0" cy="20" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+    <circle cx="0" cy="45" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+    <circle cx="0" cy="70" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+    <text x="0" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">...</text>
+    <circle cx="0" cy="140" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+    <circle cx="0" cy="165" r="6" fill="white" stroke="#388e3c" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 层间连接示意 -->
+  <g stroke="#ccc" stroke-width="0.5" opacity="0.6">
+    <line x1="75" y1="140" x2="130" y2="135"/><line x1="75" y1="140" x2="130" y2="155"/>
+    <line x1="75" y1="165" x2="130" y2="175"/><line x1="75" y1="165" x2="130" y2="195"/>
+    <line x1="170" y1="135" x2="220" y2="135"/><line x1="170" y1="155" x2="220" y2="155"/>
+    <line x1="170" y1="175" x2="220" y2="175"/><line x1="170" y1="195" x2="220" y2="195"/>
+    <line x1="260" y1="135" x2="305" y2="140"/><line x1="260" y1="155" x2="305" y2="165"/>
+    <line x1="260" y1="175" x2="305" y2="190"/><line x1="260" y1="195" x2="305" y2="215"/>
+  </g>
+  
+  <!-- 激活函数标注 -->
+  <text x="105" y="210" font-family="Arial, sans-serif" font-size="9" fill="#f57c00">ReLU</text>
+  <text x="195" y="210" font-family="Arial, sans-serif" font-size="9" fill="#f57c00">ReLU</text>
+  
+  <!-- ==================== Agent架构（右侧） ==================== -->
+  <rect x="370" y="70" width="500" height="580" fill="white" stroke="#333" stroke-width="2" stroke-dasharray="5,3" rx="5"/>
+  <text x="620" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
+    DQNAgent
+  </text>
+  
+  <!-- Policy Network 框 -->
+  <rect x="400" y="110" width="200" height="140" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+  <text x="500" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1976d2">
+    Policy Network
+  </text>
+  <text x="500" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">policy_net (θ)</text>
+  <text x="500" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Input: state (8,)</text>
+  <text x="500" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Output: Q(s,a) for 8 actions</text>
+  <text x="500" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Used for: Action selection</text>
+  <text x="500" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Optimizer: Adam (lr=1e-5)</text>
+  
+  <!-- Target Network 框 -->
+  <rect x="640" y="110" width="200" height="140" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"/>
+  <text x="740" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#c62828">
+    Target Network
+  </text>
+  <text x="740" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">target_net (θ⁻)</text>
+  <text x="740" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Same architecture</text>
+  <text x="740" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Fixed weights (no grad)</text>
+  <text x="740" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Used for: Target Q-value</text>
+  <text x="740" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Update: Every 10 episodes</text>
+  
+  <!-- Policy ↔ Target 连接 -->
+  <path d="M 600 180 L 640 180" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+  <text x="620" y="175" font-family="Arial, sans-serif" font-size="9" fill="#666">copy</text>
+  
+  <!-- Replay Memory 圆柱 -->
+  <g transform="translate(500, 320)">
+    <ellipse cx="0" cy="0" rx="60" ry="20" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+    <path d="M -60 0 L -60 80 C -60 95 60 95 60 80 L 60 0" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+    <ellipse cx="0" cy="80" rx="60" ry="20" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#7b1fa2">Replay Memory</text>
+    <text x="0" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">deque(maxlen=20000)</text>
+  </g>
+  
+  <!-- Experience 框 -->
+  <rect x="400" y="280" width="80" height="40" fill="white" stroke="#666" stroke-width="1.5" rx="3"/>
+  <text x="440" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Experience</text>
+  
+  <!-- Experience → Replay -->
+  <path d="M 440 320 L 440 340" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="450" y="335" font-family="Arial, sans-serif" font-size="9" fill="#666">push()</text>
+  
+  <!-- Replay → Minibatch -->
+  <path d="M 560 400 L 620 400 L 620 420" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="590" y="395" font-family="Arial, sans-serif" font-size="9" fill="#666">sample(64)</text>
+  
+  <!-- Minibatch -->
+  <rect x="580" y="420" width="80" height="40" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5" rx="3"/>
+  <text x="620" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f9a825">Minibatch</text>
+  
+  <!-- Minibatch → Policy -->
+  <path d="M 580 440 L 520 440 L 520 400 L 500 400 L 500 250" fill="none" stroke="#1976d2" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="540" y="435" font-family="Arial, sans-serif" font-size="9" fill="#1976d2">s, a</text>
+  
+  <!-- Minibatch → Target -->
+  <path d="M 660 440 L 700 440 L 700 250" fill="none" stroke="#c62828" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <text x="705" y="435" font-family="Arial, sans-serif" font-size="9" fill="#c62828">s'</text>
+  
+  <!-- Loss计算 -->
+  <circle cx="620" cy="500" r="30" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="620" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f57c00">Loss =</text>
+  <text x="620" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#f57c00">MSE(Q, Q')</text>
+  
+  <!-- Q-value 箭头到Loss -->
+  <path d="M 500 250 L 500 500 L 590 500" fill="none" stroke="#1976d2" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="520" y="380" font-family="Arial, sans-serif" font-size="9" fill="#1976d2">Q(s,a;θ)</text>
+  
+  <!-- Target Q 箭头到Loss -->
+  <path d="M 740 250 L 740 500 L 650 500" fill="none" stroke="#c62828" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <text x="745" y="380" font-family="Arial, sans-serif" font-size="9" fill="#c62828">r + γ·maxQ(s')</text>
+  
+  <!-- Loss → Policy (反向传播) -->
+  <path d="M 620 530 L 620 550 L 500 550 L 500 400 L 450 400 L 450 250" fill="none" stroke="#009900" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="530" y="555" font-family="Arial, sans-serif" font-size="10" fill="#009900" font-weight="bold">Backward + Adam.step()</text>
+  
+  <!-- ==================== 交互流程（底部） ==================== -->
+  <rect x="30" y="380" width="320" height="270" fill="white" stroke="#ddd" stroke-width="2" rx="5"/>
+  <text x="190" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+    Interaction Loop
+  </text>
+  
+  <!-- Environment -->
+  <ellipse cx="190" cy="450" rx="70" ry="30" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+  <text x="190" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#388e3c">SUMO Environment</text>
+  
+  <!-- Action -->
+  <path d="M 260 450 L 320 450 L 320 520 L 260 520" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="340" y="485" font-family="Arial, sans-serif" font-size="11" fill="#333">Action (phase)</text>
+  <text x="340" y="500" font-family="Arial, sans-serif" font-size="10" fill="#666">step()</text>
+  
+  <!-- State/Reward -->
+  <path d="M 190 480 L 190 520 L 120 520 L 120 480" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="80" y="505" font-family="Arial, sans-serif" font-size="11" fill="#333">State (8 queues)</text>
+  <text x="155" y="540" font-family="Arial, sans-serif" font-size="11" fill="#333">Reward (-avg_queue)</text>
+  
+  <!-- Epsilon-Greedy -->
+  <rect x="130" y="560" width="120" height="50" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5" rx="3"/>
+  <text x="190" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f57c00">Epsilon-Greedy</text>
+  <text x="190" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">ε: 1.0 → 0.01</text>
+  <text x="190" y="608" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">decay: 0.99</text>
+  
+  <!-- 连接到Policy Network -->
+  <path d="M 250 585 L 380 585 L 380 200 L 400 200" fill="none" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow-blue)"/>
+  <text x="290" y="580" font-family="Arial, sans-serif" font-size="9" fill="#1976d2">select_action()</text>
+  
+
+  
+  <!-- 图例 -->
+  <rect x="30" y="660" width="320" height="30" fill="#f5f5f5" stroke="#ddd" stroke-width="1" rx="3"/>
+  <text x="40" y="680" font-family="Arial, sans-serif" font-size="11" fill="#333">
+    <tspan font-weight="bold">Architecture:</tspan> 8 → 64 (ReLU) → 64 (ReLU) → 8 | 
+    <tspan font-weight="bold">Params:</tspan> ~5,448 | 
+    <tspan font-weight="bold">Update:</tspan> Target net every 10 episodes
+  </text>
+</svg>

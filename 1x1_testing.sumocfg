@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<input>
+		<net-file value="1x1_testing.net.xml"/>
+		<route-files value="1x1_testing.rou.xml"/>
+	</input>
+	<time>
+		<begin value="0"/>
+		<end value="10800"/>
+	</time>
+</configuration>

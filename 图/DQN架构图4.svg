@@ -1,0 +1,100 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+    </marker>
+    <marker id="arrowhead-dot" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <circle cx="5" cy="5" r="3" fill="#000" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="600" fill="#ffffff" />
+
+  <rect x="50" y="140" width="700" height="440" rx="10" ry="10" fill="none" stroke="#000" stroke-width="3" stroke-dasharray="10,5" />
+  <text x="400" y="165" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Agent (DQN)</text>
+
+  <ellipse cx="400" cy="60" rx="150" ry="40" fill="#fff" stroke="#000" stroke-width="3" />
+  <text x="400" y="65" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">Environment</text>
+  <text x="400" y="85" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">(SUMO Traffic Sim)</text>
+
+  <rect x="100" y="290" width="100" height="60" fill="#fff" stroke="#000" stroke-width="2" />
+  <text x="150" y="325" font-family="Arial" font-size="16" text-anchor="middle">Experience</text>
+
+  <path d="M 80,450 A 70,20 0 0,0 220,450 L 220,530 A 70,20 0 0,1 80,530 L 80,450" fill="#fff" stroke="#000" stroke-width="2" />
+  <ellipse cx="150" cy="450" rx="70" ry="20" fill="#fff" stroke="#000" stroke-width="2" />
+  <text x="150" y="500" font-family="Arial" font-size="16" text-anchor="middle">Replay memory</text>
+  <text x="150" y="520" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">(Deque)</text>
+
+  <line x1="150" y1="100" x2="150" y2="290" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="140" y="200" font-family="Arial" font-size="14" transform="rotate(-90 140,200)" text-anchor="middle">Reward</text>
+
+  <line x1="150" y1="350" x2="150" y2="430" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <rect x="450" y="190" width="180" height="140" fill="#fff" stroke="#000" stroke-width="3" />
+  <text x="540" y="215" font-family="Arial" font-size="16" text-anchor="middle">Main network</text>
+  <g transform="translate(470, 230)">
+    <circle cx="10" cy="10" r="6" stroke="#000" fill="none"/> <circle cx="10" cy="40" r="6" stroke="#000" fill="none"/> <circle cx="10" cy="70" r="6" stroke="#000" fill="none"/>
+    <circle cx="70" cy="10" r="6" stroke="#000" fill="none"/> <circle cx="70" cy="40" r="6" stroke="#000" fill="none"/> <circle cx="70" cy="70" r="6" stroke="#000" fill="none"/>
+    <circle cx="130" cy="25" r="6" stroke="#000" fill="none"/> <circle cx="130" cy="55" r="6" stroke="#000" fill="none"/>
+    <line x1="16" y1="10" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="16" y1="40" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="16" y1="70" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="76" y1="40" x2="124" y2="25" stroke="#000" stroke-width="1"/>
+    <line x1="76" y1="40" x2="124" y2="55" stroke="#000" stroke-width="1"/>
+    <text x="35" y="45" font-size="10">...</text>
+    <text x="95" y="45" font-size="10">...</text>
+  </g>
+
+  <rect x="450" y="410" width="180" height="140" fill="#fff" stroke="#000" stroke-width="3" />
+  <text x="540" y="435" font-family="Arial" font-size="16" text-anchor="middle">Target network</text>
+  <g transform="translate(470, 450)">
+    <circle cx="10" cy="10" r="6" stroke="#000" fill="none"/> <circle cx="10" cy="40" r="6" stroke="#000" fill="none"/> <circle cx="10" cy="70" r="6" stroke="#000" fill="none"/>
+    <circle cx="70" cy="10" r="6" stroke="#000" fill="none"/> <circle cx="70" cy="40" r="6" stroke="#000" fill="none"/> <circle cx="70" cy="70" r="6" stroke="#000" fill="none"/>
+    <circle cx="130" cy="25" r="6" stroke="#000" fill="none"/> <circle cx="130" cy="55" r="6" stroke="#000" fill="none"/>
+    <line x1="16" y1="10" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="16" y1="40" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="16" y1="70" x2="64" y2="40" stroke="#000" stroke-width="1"/>
+    <line x1="76" y1="40" x2="124" y2="25" stroke="#000" stroke-width="1"/>
+    <line x1="76" y1="40" x2="124" y2="55" stroke="#000" stroke-width="1"/>
+    <text x="35" y="45" font-size="10">...</text>
+    <text x="95" y="45" font-size="10">...</text>
+  </g>
+
+  <path d="M 210,100 L 210,240 L 450,240" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="300" y="230" font-family="Arial" font-size="14">State</text>
+
+  <path d="M 220,490 L 260,490 L 260,390" fill="none" stroke="#000" stroke-width="2" />
+  <rect x="260" y="380" width="110" height="30" fill="#fff" stroke="#000" stroke-width="1.5" />
+  <text x="315" y="400" font-family="Arial" font-size="12" text-anchor="middle">Minibatch of</text>
+  <text x="315" y="415" font-family="Arial" font-size="12" text-anchor="middle">experiences</text>
+
+  <path d="M 370,395 L 410,395 L 410,290 L 450,290" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M 410,395 L 410,490 L 450,490" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <line x1="540" y1="330" x2="540" y2="410" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="545" y="370" font-family="Arial" font-size="14">Updating weight</text>
+  <text x="545" y="385" font-family="Arial" font-size="12" fill="#555">(Load State Dict)</text>
+
+  <line x1="630" y1="260" x2="700" y2="260" stroke="#000" stroke-width="2" />
+  <text x="660" y="250" font-family="Arial" font-size="14">Q-value</text>
+
+  <line x1="630" y1="480" x2="700" y2="480" stroke="#000" stroke-width="2" />
+  <text x="660" y="470" font-family="Arial" font-size="14">Target</text>
+  <text x="660" y="495" font-family="Arial" font-size="14">Q-value</text>
+
+  <path d="M 700,260 L 700,350" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M 700,480 L 700,350" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <circle cx="700" cy="350" r="4" fill="#000" />
+  
+  <text x="710" y="340" font-family="Times New Roman" font-style="italic" font-size="18">∇<tspan baseline-shift="sub" font-size="12">θ</tspan>L(<tspan baseline-shift="sub" font-size="12">θ</tspan>)</text>
+
+  <path d="M 700,350 L 770,350 L 770,200 L 630,200" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="735" y="280" font-family="Arial" font-size="14" transform="rotate(-90 735,280)">Backpropagation</text>
+  
+  <text x="320" y="275" font-family="Arial" font-size="14">Updating weight</text>
+  <line x1="240" y1="270" x2="450" y2="270" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <path d="M 630,220 L 740,220 L 740,60 L 550,60" fill="none" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="495" y="55" font-family="Arial" font-size="16">Action</text>
+
+</svg>

@@ -1,0 +1,87 @@
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 道路与线条样式 */
+    .road { stroke: #333; stroke-width: 1.5; fill: none; }
+    .lane-line { stroke: #ccc; stroke-width: 1; stroke-dasharray: 4; }
+    .arrow { stroke: #000000; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+    
+    /* 字体设置：英文优先新罗马，中文回退至宋体 */
+    .text-style { 
+      font-family: 'Times New Roman', 'SimSun', serif; 
+      font-size: 18px; 
+      fill: #000;
+    }
+    .title-style {
+      font-family: 'Times New Roman', 'SimSun', serif; 
+      font-size: 18px; 
+      font-weight: bold;
+    }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000" />
+    </marker>
+    
+    <g id="base-intersection">
+      <path class="road" d="M -40,-60 V -20 H -60 M 40,-60 V -20 H 60 M -40,60 V 20 H -60 M 40,60 V 20 H 60" />
+      <line class="lane-line" x1="-60" y1="0" x2="-20" y2="0" />
+      <line class="lane-line" x1="20" y1="0" x2="60" y2="0" />
+      <line class="lane-line" x1="0" y1="-60" x2="0" y2="-20" />
+      <line class="lane-line" x1="0" y1="20" x2="0" y2="60" />
+    </g>
+  </defs>
+
+  <text x="400" y="30" text-anchor="middle" class="title-style">(a) 对向放行相位</text>
+  
+  <g transform="translate(100, 100)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="-50" y1="10" x2="50" y2="10" /> <line class="arrow" x1="50" y1="-10" x2="-50" y2="-10" /> <text y="75" text-anchor="middle" class="text-style">东西直行</text>
+  </g>
+
+  <g transform="translate(300, 100)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="10" y1="50" x2="10" y2="-50" /> <line class="arrow" x1="-10" y1="-50" x2="-10" y2="50" /> <text y="75" text-anchor="middle" class="text-style">南北直行</text>
+  </g>
+
+  <g transform="translate(500, 100)">
+    <use href="#base-intersection" />
+    <path class="arrow" d="M -50,10 H -10 Q 10,10 10,-50" /> <path class="arrow" d="M 50,-10 H 10 Q -10,-10 -10,50" /> <text y="75" text-anchor="middle" class="text-style">东西左转</text>
+  </g>
+
+  <g transform="translate(700, 100)">
+    <use href="#base-intersection" />
+    <path class="arrow" d="M 10,50 V 10 Q 10,-10 -50,-10" /> <path class="arrow" d="M -10,-50 V -10 Q -10,10 50,10" /> <text y="75" text-anchor="middle" class="text-style">南北左转</text>
+  </g>
+
+  <text x="400" y="210" text-anchor="middle" class="title-style">(b) 单进口放行相位</text>
+
+  <g transform="translate(100, 280)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="-50" y1="10" x2="50" y2="10" />
+    <path class="arrow" d="M -50,10 H -10 Q 10,10 10,-50" />
+    <text y="75" text-anchor="middle" class="text-style">西进口 (左+直)</text>
+  </g>
+
+  <g transform="translate(300, 280)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="50" y1="-10" x2="-50" y2="-10" />
+    <path class="arrow" d="M 50,-10 H 10 Q -10,-10 -10,50" />
+    <text y="75" text-anchor="middle" class="text-style">东进口 (左+直)</text>
+  </g>
+
+  <g transform="translate(500, 280)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="10" y1="50" x2="10" y2="-50" />
+    <path class="arrow" d="M 10,50 V 10 Q 10,-10 -50,-10" />
+    <text y="75" text-anchor="middle" class="text-style">南进口 (左+直)</text>
+  </g>
+
+  <g transform="translate(700, 280)">
+    <use href="#base-intersection" />
+    <line class="arrow" x1="-10" y1="-50" x2="-10" y2="50" />
+    <path class="arrow" d="M -10,-50 V -10 Q -10,10 50,10" />
+    <text y="75" text-anchor="middle" class="text-style">北进口 (左+直)</text>
+  </g>
+
+</svg>
