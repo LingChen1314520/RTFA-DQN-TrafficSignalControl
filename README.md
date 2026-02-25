@@ -9,7 +9,7 @@
 - 结果/可视化：`testing_hangzhou_4x4_gudang_18041610_1h_results/`、`training_results/`
 
 ## 依赖（建议）
-- SUMO（推荐 1.8 或以上，参见 https://sumo.dlr.de/）
+- SUMO（推荐 1.8 或以上，参见 https://sumo.dlr.de ）
 - Python 3.8+
 - 常用 Python 包：`numpy`, `pandas`, `torch`（如果使用 PyTorch）, `matplotlib` 等
 
