@@ -22,17 +22,17 @@ from sumolib import checkBinary
 from generate_random_vehicle_traffic_flow import generate_traffic_flow_for_training
 
 # ==========================================
-# 配置参数
+# 配置参数 (Standard DQN 版本)
 # ==========================================
 class TrainingConfig:
     NET_FILE = "1x1_training.net.xml"
     ROUTE_FILE = "1x1_training.rou.xml"
     SUMO_CFG = "1x1_training.sumocfg"
-    MODEL_SAVE_PATH = "model_1x1_dqn.pth"
-    LOG_DIR = "training_results"  # 指定保存数据的文件夹
+    MODEL_SAVE_PATH = "model_1x1_standard_dqn.pth"
+    LOG_DIR = "training_results_standard"  # 指定保存数据的文件夹
     
-    USE_GUI = False  # True 则弹出仿真界面，False 则在后台高速运行
-    TOTAL_EPISODES =1000
+    USE_GUI = False
+    TOTAL_EPISODES = 1000
     MAX_STEPS_PER_EPISODE = 10800
     
     TL_ID = "J0"
@@ -126,15 +126,13 @@ class SumoEnvironment:
         self.episode = episode
         self.tl_id = TrainingConfig.TL_ID
         self.phases = TrainingConfig.PHASES
-        self.last_step_queue_lengths = {}
 
     def reset(self):
-        generate_traffic_flow_for_training(self.episode, TrainingConfig.ROUTE_FILE)
+        generate_traffic_flow_for_training(42, TrainingConfig.ROUTE_FILE)  # 随机种子
         sumo_binary = checkBinary('sumo-gui' if TrainingConfig.USE_GUI else 'sumo')
         traci.start([sumo_binary, "-c", TrainingConfig.SUMO_CFG, "--no-step-log", "true"])
         self.controlled_lanes = traci.trafficlight.getControlledLanes(self.tl_id)
         self.incoming_lanes = list(set(self.controlled_lanes))
-        self.last_step_queue_lengths = {lane: 0 for lane in self.incoming_lanes}
         traci.trafficlight.setRedYellowGreenState(self.tl_id, self.phases[0])
         self.current_phase_index = 0
         return self._get_state()
@@ -154,7 +152,7 @@ class SumoEnvironment:
         # 获取所有进口道的总排队数
         total_queue = sum([traci.lane.getLastStepHaltingNumber(lane) for lane in self.incoming_lanes])
         
-        # 归一化处理（可选）：除以车道数，得到平均每条道的排队惩罚
+        # 归一化处理：除以车道数，得到平均每条道的排队惩罚
         reward = -(total_queue / len(self.incoming_lanes))
         return reward
 
@@ -174,12 +172,10 @@ class SumoEnvironment:
 # 执行训练并保存数据
 # ==========================================
 def run_training():
-    # 创建保存目录
     if not os.path.exists(TrainingConfig.LOG_DIR):
         os.makedirs(TrainingConfig.LOG_DIR)
     
-    # 准备CSV文件头
-    csv_path = os.path.join(TrainingConfig.LOG_DIR, "training_stats.csv")
+    csv_path = os.path.join(TrainingConfig.LOG_DIR, "standard_training_stats.csv")
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Episode', 'Reward', 'Avg_Queue', 'Avg_Loss', 'Avg_Q_Value', 'Epsilon'])
@@ -197,8 +193,8 @@ def run_training():
             action = agent.select_action(state)
             next_state, reward, done = env.step(action)
             agent.push(state, action, reward, next_state, done)
-            
-            # 更新模型并记录 Loss 和 Q值
+
+            # 更新模型并记录 Loss 和 Q值            
             loss, q_val = agent.update()
             if loss is not None:
                 ep_loss.append(loss)
@@ -226,14 +222,14 @@ def run_training():
             writer = csv.writer(f)
             writer.writerow([episode, ep_reward, avg_q_len, avg_loss, avg_q_val, agent.epsilon])
 
-        print(f"Ep {episode} | Reward: {ep_reward:.1f} | Queue: {avg_q_len:.2f} | Loss: {avg_loss:.4f} | Q: {avg_q_val:.2f}")
+        print(f"Standard-Ep {episode} | Reward: {ep_reward:.1f} | Queue: {avg_q_len:.2f}")
 
         if episode % 20 == 0 or episode == TrainingConfig.TOTAL_EPISODES:
-            agent.policy_net.to('cpu') # 转到CPU保存更通用
+            agent.policy_net.to('cpu')
             torch.save(agent.policy_net.state_dict(), TrainingConfig.MODEL_SAVE_PATH)
             agent.policy_net.to(agent.device)
 
-    print(f"训练完成，所有统计数据已保存至 {TrainingConfig.LOG_DIR} 文件夹。")
+    print(f"Standard DQN 训练完成，数据保存在 {TrainingConfig.LOG_DIR}。")
 
 if __name__ == "__main__":
     run_training()

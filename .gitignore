@@ -7,7 +7,7 @@ __pycache__/
 *.sqlite3
 *.db
 testing_*/
-training_results/
+training_results_*/
 testing_*/
 *.vsd* 
 *.opju
