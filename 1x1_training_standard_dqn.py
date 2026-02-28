@@ -29,7 +29,7 @@ class TrainingConfig:
     ROUTE_FILE = "1x1_training.rou.xml"
     SUMO_CFG = "1x1_training.sumocfg"
     MODEL_SAVE_PATH = "model_1x1_standard_dqn.pth"
-    LOG_DIR = "training_results_standard"  # 指定保存数据的文件夹
+    LOG_DIR = "training_results"  # 指定保存数据的文件夹
     
     USE_GUI = False
     TOTAL_EPISODES = 1000
@@ -175,7 +175,7 @@ def run_training():
     if not os.path.exists(TrainingConfig.LOG_DIR):
         os.makedirs(TrainingConfig.LOG_DIR)
     
-    csv_path = os.path.join(TrainingConfig.LOG_DIR, "standard_training_stats.csv")
+    csv_path = os.path.join(TrainingConfig.LOG_DIR, "training_stats_standard.csv")
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Episode', 'Reward', 'Avg_Queue', 'Avg_Loss', 'Avg_Q_Value', 'Epsilon'])

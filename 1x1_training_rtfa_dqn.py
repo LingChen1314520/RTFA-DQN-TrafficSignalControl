@@ -29,7 +29,7 @@ class TrainingConfig:
     ROUTE_FILE = "1x1_training.rou.xml"
     SUMO_CFG = "1x1_training.sumocfg"
     MODEL_SAVE_PATH = "model_1x1_rtfa_dqn.pth"
-    LOG_DIR = "training_results_rtfa"  # 指定保存数据的文件夹
+    LOG_DIR = "training_results"  # 指定保存数据的文件夹
     
     USE_GUI = False  # True 则弹出仿真界面，False 则在后台高速运行
     TOTAL_EPISODES =1000
@@ -179,7 +179,7 @@ def run_training():
         os.makedirs(TrainingConfig.LOG_DIR)
     
     # 准备CSV文件头
-    csv_path = os.path.join(TrainingConfig.LOG_DIR, "training_stats.csv")
+    csv_path = os.path.join(TrainingConfig.LOG_DIR, "training_stats_rtfa.csv")
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Episode', 'Reward', 'Avg_Queue', 'Avg_Loss', 'Avg_Q_Value', 'Epsilon'])
